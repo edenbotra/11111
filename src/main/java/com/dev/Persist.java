@@ -21,7 +21,7 @@ public class Persist {
             e.printStackTrace();
         }
     }
-
+/////
     public Integer getUserIdByToken(String token) {
         Integer id = null;
         try {
@@ -265,8 +265,6 @@ public class Persist {
         }
         return success;
     }
-
-
 
     public boolean messageRead(int message_id) {
         boolean success = false;

@@ -9,22 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
-import java.sql.SQLException;
 import java.util.List;
-
 
 @RestController
 public class TestController {
-
 
     @Autowired
     private Persist persist;
 
     @PostConstruct
     private void init () {
-
     }
-
 
     @RequestMapping("sign-in")
     public String signIn (String username, String password)  {
@@ -45,7 +40,6 @@ public class TestController {
                 token = persist.getTokenByUsernameAndPassword(username,password);
 
             }
-
         }
         return token;
     }
@@ -61,11 +55,8 @@ public class TestController {
             userObject.setToken(hash);
             success = persist.createAccount(userObject);
         }
-
         return success;
     }
-
-
 
 
     @RequestMapping("/get-username-by-token")
@@ -73,8 +64,6 @@ public class TestController {
 
         return persist.getUsernameByToken(token);
     }
-
-
 
     @RequestMapping("send-message")
     public boolean sendMessage (String senderToken, String addressee_id, String subject, String content) {
@@ -84,8 +73,6 @@ public class TestController {
     public List<MessageObject> getMessages (String token) {
         return persist.getMessages(token);
     }
-
-
 
     @RequestMapping("checkIfUserExistByUsername")
     public boolean checkIfUserExist(String username){
@@ -101,8 +88,4 @@ public class TestController {
     public boolean messageRead(int id){
         return persist.messageRead(id);
     }
-
-
-
-
 }
